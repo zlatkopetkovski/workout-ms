@@ -1,0 +1,15 @@
+.programs{
+    @extend %layout-margin-padding;
+    @extend %heading-main-style;
+    background-color: $light-gray;
+    .card{
+        border: none;
+    }
+    &-title{
+        text-align: center;
+        margin-bottom: px2rem(20);
+    }
+    &-card{
+        margin-top:px2rem(22);
+    }
+}

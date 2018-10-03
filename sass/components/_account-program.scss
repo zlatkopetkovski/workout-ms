@@ -1,0 +1,63 @@
+.account-program{
+    @extend %layout-margin-padding;
+    @extend %heading-main-style;
+    &-section{
+        padding-top:px2rem(30);
+        padding-bottom: px2rem(60);
+        border-bottom: 1px solid $light-gray;
+        &-participants{
+            h5{
+                color: $medium-gray;
+            }
+            &-single{
+                &-icon{
+                    $size: 70;
+                    display: block;
+                    font-size: px2rem($size);
+                    &:after{
+                        font-family: FontAwesomeSolid;
+                        content: "\f2bd";
+                    }
+                }
+                &-name{
+                    margin-top: px2rem(-10);
+                    display: block;
+                }
+                
+            }
+        }
+        &-posts{
+            padding: px2rem(30);
+            margin-top: px2rem(30);
+            border: 1px solid $medium-gray;
+            span{
+                display: block;
+                margin-bottom: px2rem(5);
+            }
+            &-img{
+                width: px2rem(170);
+                height: px2rem(170);
+            }
+
+
+        }
+        &-photos{
+            border: 0;
+            padding-bottom: 0;
+            &-img{
+                width: px2rem(270);
+                height: px2rem(270);
+            }
+
+        }
+    }
+    &-title-location{
+        h1,h4{
+        color: $medium-gray;
+        }
+    }
+
+}
+.add-new-post-modal-footer{
+    justify-content: center;
+}

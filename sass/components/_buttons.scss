@@ -1,0 +1,121 @@
+.my-main-button{
+    background-color: $pink;
+    border-color: $medium-dark-pink; 
+    &:hover{
+        background-color: $medium-dark-pink;
+        border-color: $darker-pink; 
+    }
+    &:not(:disabled):not(.disabled):active, &:not(:disabled):not(.disabled).active, .show > &.dropdown-toggle {
+        background-color: $medium-dark-pink;
+        border-color: $darker-pink; 
+    }
+
+    &:focus, &:not(:disabled):not(.disabled):active:focus, &:not(:disabled):not(.disabled).active:focus, .show > &.dropdown-toggle:focus{
+        box-shadow: 0 0 0 0.2rem rgba(234, 67, 94, 0.5);
+        background-color: $pink;
+        border-color: $light-pink;
+    }
+}
+.my-light-button{
+    background-color: white;
+    border-color: $medium-dark-pink; 
+    &:hover{
+        border-color: $darker-pink; 
+    }
+    &:not(:disabled):not(.disabled):active, &:not(:disabled):not(.disabled).active, .show > &.dropdown-toggle {
+        border-color: $darker-pink; 
+    }
+
+    &:focus, &:not(:disabled):not(.disabled):active:focus, &:not(:disabled):not(.disabled).active:focus, .show > &.dropdown-toggle:focus{
+        box-shadow: 0 0 0 0.2rem rgba(234, 67, 94, 0.5);
+        border-color: $light-pink;
+    }
+}
+.contactus-button{
+    margin-top: px2rem(50);
+}
+.select-program-button{
+    margin-top: px2rem(44);
+}
+.go_back{
+    color: $pink;
+    &-margin{
+        margin-bottom: px2rem(73);
+    }
+    &:before{
+        font-size: px2rem(24);
+        position: relative;
+        top: px2rem(3);
+        padding-right: px2rem(15);
+        font-family: FontAwesomeSolid;
+        content: "\f060";
+    }
+    &-link{
+        margin-bottom: px2rem(73);
+        &:hover{
+            color: $pink;
+            text-decoration: none;
+        }
+    }
+}
+.login-button{
+    min-width: 100px;
+    margin: px2rem(30) 0 px2rem(30) 0;
+    &-facebook{
+        margin-bottom:px2rem(20); 
+        background-color: $login-facebook;
+        border-color: $medium-dark-login-facebook; 
+        &:hover{
+            background-color: $medium-dark-login-facebook;
+            border-color: $darker-login-facebook; 
+        }
+        &:not(:disabled):not(.disabled):active, &:not(:disabled):not(.disabled).active, .show > &.dropdown-toggle {
+            background-color: $medium-dark-login-facebook;
+            border-color: $darker-login-facebook; 
+        }
+
+        &:focus, &:not(:disabled):not(.disabled):active:focus, &:not(:disabled):not(.disabled).active:focus, .show > &.dropdown-toggle:focus{
+            box-shadow: 0 0 0 0.2rem rgba(59, 89, 153, 0.5);
+            background-color: $login-facebook;
+            border-color: $light-login-facebook;
+        }           
+    }
+    &-twitter{
+        margin-bottom:px2rem(12);  
+        background-color: $login-twitter;
+        border-color: $medium-dark-login-twitter; 
+        &:hover{
+            background-color: $medium-dark-login-twitter;
+            border-color: $darker-login-twitter; 
+        }
+        &:not(:disabled):not(.disabled):active, &:not(:disabled):not(.disabled).active, .show > &.dropdown-toggle {
+            background-color: $medium-dark-login-twitter;
+            border-color: $darker-login-twitter; 
+        }
+
+        &:focus, &:not(:disabled):not(.disabled):active:focus, &:not(:disabled):not(.disabled).active:focus, .show > &.dropdown-toggle:focus{
+            box-shadow: 0 0 0 0.2rem rgba(29, 161, 243, 0.5);
+            background-color: $login-twitter;
+            border-color: $light-login-twitter;
+        }                     
+    }
+    &-google{
+        margin-bottom:px2rem(12);  
+        background-color: $login-google;
+        border-color: $medium-dark-login-google; 
+        &:hover{
+            background-color: $medium-dark-login-google;
+            border-color: $darker-login-google; 
+        }
+        &:not(:disabled):not(.disabled):active, &:not(:disabled):not(.disabled).active, .show > &.dropdown-toggle {
+            background-color: $medium-dark-login-google;
+            border-color: $darker-login-google; 
+        }
+
+        &:focus, &:not(:disabled):not(.disabled):active:focus, &:not(:disabled):not(.disabled).active:focus, .show > &.dropdown-toggle:focus{
+            box-shadow: 0 0 0 0.2rem rgba(220, 68, 55, 0.5);
+            background-color: $login-google;
+            border-color: $light-login-google;
+        }                     
+    }
+}

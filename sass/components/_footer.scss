@@ -1,0 +1,30 @@
+.my-footer{
+    padding: px2rem(60) 0 px2rem(60) 0;
+    background-color: $pink;
+    color: white;
+    &-social{
+        $size:33;
+        display: inherit;
+        a{
+            color: white;
+        }
+        &-icon-box{
+            margin-left: px2rem(20);
+            padding-top: px2rem(14);
+        }
+        &-facebook{
+            font-size: px2rem($size);
+            &:after{
+                font-family: FontAwesomeBrands;
+                content: "\f082";
+            }
+        }
+        &-twitter{
+            font-size: px2rem($size);
+            &:after{
+                font-family: FontAwesomeBrands;
+                content: "\f081";
+            }
+        }
+    }
+}

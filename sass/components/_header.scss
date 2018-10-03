@@ -1,0 +1,39 @@
+.my-nav{
+    background-color: $pink;
+    height: 100px;
+    &-login{
+        font-weight: 500;
+        >a{
+            color: white;
+        }
+        >a:hover{
+            text-decoration: none;
+        }
+        &-icon{
+        $size: 30;
+        font-size: px2rem($size);
+        margin-left: px2rem(8);
+        &:after{
+            font-family: FontAwesomeSolid;
+            content: "\f2bd";
+            }
+            &-description{
+                position: relative;
+                top: px2rem(-5);
+            }
+        }
+    }
+    &-dropdown-menu{
+        background-color: $light-gray;
+    }
+}
+.navbar-textual{
+    h1{
+        font-size: px2rem(38);
+        font-weight: 300;
+        margin-top: px2rem(18);
+        outline-offset: px2rem(-10);
+        border-top: 1px solid white;
+        color: white;
+    }
+}

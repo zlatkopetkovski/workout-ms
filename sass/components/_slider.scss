@@ -1,0 +1,66 @@
+$arrow-size: 55;
+.my-slider{
+    @extend %heading-main-style;
+    padding-top: px2rem(60);
+    padding-bottom: px2rem(60);
+    max-height: 460px;
+    display: block;
+    img{
+        max-height: 250px;
+    }
+}
+.carousel-indicators li{
+    $size: 13;
+    width: px2rem($size);
+    height: px2rem($size);
+    margin-left: px2rem(10);
+    margin-right: px2rem(10);
+    background-color: $light-gray;
+    border-radius: 4em;
+}
+.carousel-indicators .active {
+    background-color: $pink;
+}
+.carousel-control-prev-icon {
+    background-image: none;
+    visibility: hidden;
+    font-size: px2rem($arrow-size + 8);
+    width: px2rem($arrow-size);
+    height: px2rem($arrow-size);
+    background-color: $pink;
+    color: white;
+    border-radius: 4em;
+    margin-left: px2rem(-80);
+    &:after{
+        position: relative;
+        top: px2rem(-19);
+        font-family: FontAwesomeSolid;
+        margin-left: px2rem(-5);
+        content:'\f0d9';
+    }
+    @media (min-width: 768px){
+        visibility: visible;
+    }
+    
+}
+.carousel-control-next-icon {    
+    background-image: none;
+    visibility: hidden;
+    font-size: px2rem($arrow-size + 8);
+    width: px2rem($arrow-size);
+    height: px2rem($arrow-size);
+    background-color: $pink;
+    color: white;
+    border-radius: 4em;
+    margin-right: px2rem(-80);
+    &:after{
+        position: relative;
+        margin-right: px2rem(-5);
+        top: px2rem(-19);
+        font-family: FontAwesomeSolid;
+        content:'\f0da';
+    }
+    @media (min-width: 768px){
+        visibility: visible;
+    }
+}

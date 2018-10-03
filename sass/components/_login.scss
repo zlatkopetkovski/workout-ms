@@ -1,0 +1,26 @@
+.login{
+    @extend %layout-margin-padding;
+    @extend %heading-main-style;
+    &-separator{
+        border-right: 0;
+        border-bottom: 1px solid $medium-gray;
+        @media (min-width:768px){
+            border-right: 1px solid $medium-gray;
+            border-bottom: 0;
+        }
+    }
+    &-forgot-pass{
+        a{
+            color: $medium-dark-gray;
+        }
+        &:active, &:hover{
+            color: $medium-dark-gray;
+        }
+    }
+    &-margin{
+        display: block;
+        //margin: px2rem(22) 0 px2rem(22) 0;
+        padding-top: px2rem(22);
+        padding-bottom: px2rem(22);
+    }
+}

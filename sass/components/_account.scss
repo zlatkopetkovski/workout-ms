@@ -1,0 +1,52 @@
+.account{
+    @extend %layout-margin-padding;
+    @extend %heading-main-style;
+    &-title{
+        h1{
+            color: $medium-gray;
+        }
+    }
+    &-section{
+        padding-top:px2rem(30);
+        padding-bottom: px2rem(60);
+        &-info{
+            border-bottom: 1px solid $light-gray;
+            h2,h4{
+                margin-bottom: px2rem(26);
+            }
+            &-img{
+                $size: 190;
+                margin-top: px2rem(-45);
+                display: block;
+                font-size: px2rem($size);
+                &:after{
+                    font-family: FontAwesomeSolid;
+                    content: "\f2bd";
+                }
+            }
+        }
+        &-programs{
+            padding-bottom: 0;
+            h2,{
+                margin-bottom: px2rem(26);
+            }
+            &-block{
+                border: 1px solid $medium-gray;
+                margin-bottom: px2rem(30);
+                &-details{
+                    padding-right: 0;
+                }
+                &-details-date{
+                    padding-right: 0;
+                }
+                a{
+                    color: $pink;
+                }
+            }
+        }
+    }
+    &-edit{
+        text-align:center;
+    }
+
+}

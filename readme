@@ -1,0 +1,16 @@
+2 strani
+    front-end
+    bootstrap
+        sass
+        kvalitetno da se organizira samiot kod vo sass
+    nameing konvencija za klasite
+
+
+
+
+
+    php
+
+//
+sass watch
+sass -r sass-globbing --watch sass:css
