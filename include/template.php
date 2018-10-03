@@ -21,7 +21,7 @@
                     <h1><?php print $company_name;?></h1>
                 </a>
             </div>
-            <!--login - logout link -->
+            <!--login -or logout link -->
             <?php print $login_logout;?> 
         </div>
       </nav>
