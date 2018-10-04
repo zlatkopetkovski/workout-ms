@@ -1,10 +1,19 @@
 <?
 $title = 'program';
+
+if (isset($_REQUEST['action'])){
+    if (isset($_SESSION['user']) && $_REQUEST['action']=='enter'){
+        header("Location:".url('account-program.php'));
+    }else{
+        header("Location:".url('account.php'));
+    }
+}
+
 $content = '
     <div class="program">
         <div class="container">
             <div class="text-center go_back-margin">
-                <a class="go_back-link" href="index.html#programs">
+                <a class="go_back-link" href="'.url('home.php').'#programs">
                     <span class="go_back">Go back to all programs</span>
                 </a>
             </div>
@@ -30,15 +39,16 @@ $content = '
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-6 text-center">
-                    <form action="#">
+                    <form action="program.php" method="post">
                         <div class="form-group">
                             <label class="hiden-label" for="selectLocation">Select location:</label>
-                            <select id="selectLocation" class="form-control">
+                            <select id="selectLocation" name="selectLocation" class="form-control">
                                 <option>Select location</option>
                             <option>Location 1</option>
                             </select>
                         </div>
-                        <a class="btn btn-primary my-main-button select-program-button" href="account-program.html">Sign up</a>
+                        <button type="submit" href="program.php" class="btn btn-primary my-main-button select-program-button">Sign up</button>
+                        <input type="hidden" name="action" value="enter" />
                     </form>
                 </div>
                 <div class="col-md-3"></div>
