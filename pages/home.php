@@ -1,6 +1,15 @@
 <?php
 
 $title = 'Home';
+$to = 'petkovski_zlatko@yahoo.com';
+
+if (isset($_REQUEST['submitted'])&& $_REQUEST['submitted']=='submit'){
+    $subject = $_REQUEST['name'];
+    $from = $_REQUEST['email'];
+    $message = $_REQUEST['message'];
+
+    mail($to,$subject,$message,$from);
+}
 
 $slider = '
 <div id="carouselIndicators" class="carousel slide my-slider" data-ride="carousel">
@@ -144,20 +153,21 @@ $content = '
             <div class="row contactus-form">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
-                    <form action="#">
+                    <form action="'.url('home.php').'" method="post">
                         <div class="form-group">
                             <label for="name" class="hiden-label">Name:</label>
-                            <input type="text" class="form-control" id="name" placeholder="First and last name">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="First and last name">
                         </div>
                         <div class="form-group">
                             <label for="email" class="hiden-label">Email:</label>
-                            <input type="email" class="form-control" id="email" placeholder="Email address">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Email address">
                         </div>
                         <div class="form-group">
                             <label for="message" class="hiden-label">Message</label>
-                            <textarea class="form-control" id="message" rows="3" placeholder="Message"></textarea>
+                            <textarea class="form-control" id="message" rows="3" name="message" placeholder="Message"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary my-main-button contactus-button">Send message</button>
+                        <input type="hidden" name="submitted" value="submit" />
                     </form>
                 </div>
                 <div class="col-md-3"></div>
