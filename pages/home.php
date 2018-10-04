@@ -1,7 +1,7 @@
 <?php
 
 $title = 'Home';
-$to = 'petkovski_zlatko@yahoo.com';
+$mailto = get_settings('contact_mail');
 
 if (isset($_REQUEST['submitted'])&& $_REQUEST['submitted']=='submit'){
     $subject = $_REQUEST['name'];
@@ -143,11 +143,11 @@ $content = '
             <div class="d-flex justify-content-center"> 
                 <div class="contactus-info">
                     <span class="contactus-info-icon contactus-info-icon-address  align-middle" title="Address icon" aria-hidden="true"></span>
-                    <span class="contactus-info-icon-description align-middle" aria-hidden="true">Address</span> 
+                    <span class="contactus-info-icon-description align-middle" aria-hidden="true">'.get_settings('address').'</span> 
                 </div>
                 <div class="contactus-info">
                     <span class="contactus-info-icon contactus-info-icon-phone align-middle" title="Phone icon" aria-hidden="true"></span>
-                    <span class="contactus-info-icon-description align-middle" aria-hidden="true">Phone number</span>
+                    <span class="contactus-info-icon-description align-middle" aria-hidden="true">'.get_settings('phone_number').'</span>
                 </div>
             </div>
             <div class="row contactus-form">
