@@ -292,9 +292,6 @@ body {
 .login-separator {
   border-right: 0;
   border-bottom: 1px solid #adb5bd; }
-  .login-separator a:hover {
-    text-decoration: none;
-    color: #cd3951; }
   @media (min-width: 768px) {
     .login-separator {
       border-right: 1px solid #adb5bd;
@@ -303,6 +300,10 @@ body {
   color: #495057; }
 .login-forgot-pass:active, .login-forgot-pass:hover {
   color: #495057; }
+.login-register a {
+  color: #cd3951; }
+.login-register:active, .login-register:hover {
+  text-decoration: none; }
 .login-margin {
   display: block;
   padding-top: 1.375rem;

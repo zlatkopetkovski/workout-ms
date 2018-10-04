@@ -134,7 +134,9 @@ if (isset($_SESSION['user'])) {
                             <button type="submit" href="account.php" class="btn btn-primary my-main-button login-button">Log in</button>
                             <input type="hidden" name="action" value="login" />
                         </form>
-                        <a class="my_main_link" href="'.url('register.php').'"><h5>Not a member? Sign up here</h5></a>
+                        <div class="login-register">
+                            <h5><a href="'.url('register.php').'">Not a member? Sign up here</a></h5>
+                        </div>
                     </div>
                     <div class="col-md-4 text-center login-margin">
                         <span class="login-margin">Or login with your social media account</span>
