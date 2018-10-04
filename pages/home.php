@@ -1,96 +1,107 @@
 <?php
 
 $title = 'Home';
-$content = <<<EOD
-    <div class="container">
-        <div id="carouselIndicators" class="carousel slide my-slider" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-5">
-                        <h1>Lorem ipsum dolor sit amet</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dapibus, 
-                            dui vel condimentum volutpat, arcu metus pulvinar lectus, eget ornare magna mi ut magna. </p>
-                    </div>
-                        <img class="d-block w-100 col-md-5" src="images/yoga1.jpg" alt="First slide">
-                    <div class="col-md-1"></div>
-                </div>
-                </div>
-                <div class="carousel-item">
-                <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-5">
-                        <h1>Lorem ipsum dolor sit amet</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dapibus, 
-                            dui vel condimentum volutpat, arcu metus pulvinar lectus, eget ornare magna mi ut magna. </p>
-                    </div>
-                        <img class="d-block w-100 col-md-5" src="images/yoga2.jpg" alt="First slide">
-                    <div class="col-md-1"></div>
-                </div>
-                </div>
-                <div class="carousel-item">
-                <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-5">
-                        <h1>Lorem ipsum dolor sit amet</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dapibus, 
-                            dui vel condimentum volutpat, arcu metus pulvinar lectus, eget ornare magna mi ut magna. </p>
-                    </div>
-                        <img class="d-block w-100 col-md-5" src="images/yoga3.jpg" alt="First slide">
-                    <div class="col-md-1"></div>
-                </div>
-                </div>
+
+$slider = '
+<div id="carouselIndicators" class="carousel slide my-slider" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+                <h1>Lorem ipsum dolor sit amet</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dapibus, 
+                    dui vel condimentum volutpat, arcu metus pulvinar lectus, eget ornare magna mi ut magna. </p>
             </div>
-            <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon align-middle" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+                <img class="d-block w-100 col-md-5" src="images/yoga1.jpg" alt="First slide">
+            <div class="col-md-1"></div>
         </div>
+        </div>
+        <div class="carousel-item">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+                <h1>Lorem ipsum dolor sit amet</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dapibus, 
+                    dui vel condimentum volutpat, arcu metus pulvinar lectus, eget ornare magna mi ut magna. </p>
+            </div>
+                <img class="d-block w-100 col-md-5" src="images/yoga2.jpg" alt="First slide">
+            <div class="col-md-1"></div>
+        </div>
+        </div>
+        <div class="carousel-item">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+                <h1>Lorem ipsum dolor sit amet</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dapibus, 
+                    dui vel condimentum volutpat, arcu metus pulvinar lectus, eget ornare magna mi ut magna. </p>
+            </div>
+                <img class="d-block w-100 col-md-5" src="images/yoga3.jpg" alt="First slide">
+            <div class="col-md-1"></div>
+        </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon align-middle" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>';
+
+$programs='
+<div class="col-md-4 programs-card">
+    <div class="card">
+        <img class="card-img-top" src="images/yoga1.jpg" alt="Card image">
+        <div class="card-body">
+            <h4 class="card-title">Program 1</h4>
+            <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+            <a href="program.php" class="btn btn-primary my-main-button">See Program</a>
+        </div>
+    </div>
+    </div>
+    <div class="col-md-4 programs-card">
+    <div class="card">
+        <img class="card-img-top" src="images/yoga2.jpg" alt="Card image">
+        <div class="card-body">
+            <h4 class="card-title">Program 2</h4>
+            <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+            <a href="program.php" class="btn btn-primary  my-main-button">See Program</a>
+        </div>
+    </div>
+    </div>
+    <div class="col-md-4 programs-card">
+    <div class="card">
+        <img class="card-img-top" src="images/yoga3.jpg" alt="Card image">
+        <div class="card-body">
+            <h4 class="card-title">Program 3</h4>
+            <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+            <a href="program.php" class="btn btn-primary  my-main-button">See program</a>
+        </div>
+    </div>
+</div>';
+
+
+
+$content = '
+    <div class="container">
+
+    '.$slider.'
+        
     </div>
     <div class="programs" id="programs">
         <h2 class="programs-title">Programs</h2>
         <div class="container">
             <div class="row">
-                <div class="col-md-4 programs-card">
-                    <div class="card">
-                        <img class="card-img-top" src="images/yoga1.jpg" alt="Card image">
-                        <div class="card-body">
-                            <h4 class="card-title">Program 1</h4>
-                            <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-                            <a href="program.php" class="btn btn-primary my-main-button">See Program</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 programs-card">
-                    <div class="card">
-                        <img class="card-img-top" src="images/yoga2.jpg" alt="Card image">
-                        <div class="card-body">
-                            <h4 class="card-title">Program 2</h4>
-                            <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-                            <a href="program.php" class="btn btn-primary  my-main-button">See Program</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 programs-card">
-                    <div class="card">
-                        <img class="card-img-top" src="images/yoga3.jpg" alt="Card image">
-                        <div class="card-body">
-                            <h4 class="card-title">Program 3</h4>
-                            <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-                            <a href="program.php" class="btn btn-primary  my-main-button">See program</a>
-                        </div>
-                    </div>
-                </div>
+                '.$programs.'
             </div>
         </div>
     </div>
@@ -153,4 +164,4 @@ $content = <<<EOD
             </div>
         </div>
     </div>
-EOD;
+';
