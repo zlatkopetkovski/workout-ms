@@ -5,10 +5,12 @@
     <title><?php print $title ;?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Webpage for workout"/>
+    
 
+    <!-- after injector edit path -- <?php print url('css/styles.css'); ?> -->
     <!-- injector:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="<?php print url('bower_components/bootstrap/dist/css/bootstrap.css'); ?>">
+    <link rel="stylesheet" href="<?php print url('css/styles.css'); ?>">
     <!-- endinjector -->
 </head>
 <body>
@@ -53,10 +55,11 @@
         </div>
     </footer>
 
+    <!-- after injector edit path -- <?php print url('css/styles.css'); ?> -->
     <!-- injector:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="js/script.js"></script>
+    <script src="<?php print url('bower_components/jquery/dist/jquery.js'); ?>"></script>
+    <script src="<?php print url('bower_components/bootstrap/dist/js/bootstrap.js'); ?>"></script>
+    <script src="<?php print url('js/script.js'); ?>"></script>
     <!-- endinjector -->
 </body>
 </html>

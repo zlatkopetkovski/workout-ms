@@ -59,7 +59,7 @@ if (isset($_SESSION['user'])) {
                 <div class="row account-section-programs-block">
                     <div class="row col-6">
                         <div class="col-12 text-left d-flex align-items-center">
-                            <a href="account-program.html">
+                            <a href="account/program.php">
                                 <h4>Program 1</h4>
                             </a>
                         </div>
@@ -80,7 +80,7 @@ if (isset($_SESSION['user'])) {
                 <div class="row account-section-programs-block">
                         <div class="row col-6">
                             <div class="col-12 text-left d-flex align-items-center">
-                                <a href="account-program.html">
+                                <a href="account/program.php">
                                     <h4>Program 2</h4>
                                 </a>
                             </div>

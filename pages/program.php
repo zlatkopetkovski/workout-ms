@@ -3,7 +3,7 @@ $title = 'program';
 
 if (isset($_REQUEST['action'])){
     if (isset($_SESSION['user']) && $_REQUEST['action']=='enter'){
-        header("Location:".url('account-program.php'));
+        header("Location:".url('account/program.php'));
     }else{
         header("Location:".url('account.php'));
     }
