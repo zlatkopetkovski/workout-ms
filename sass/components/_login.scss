@@ -4,6 +4,10 @@
     &-separator{
         border-right: 0;
         border-bottom: 1px solid $medium-gray;
+        a:hover{
+            text-decoration: none;
+            color: $pink;
+        }
         @media (min-width:768px){
             border-right: 1px solid $medium-gray;
             border-bottom: 0;

@@ -292,6 +292,9 @@ body {
 .login-separator {
   border-right: 0;
   border-bottom: 1px solid #adb5bd; }
+  .login-separator a:hover {
+    text-decoration: none;
+    color: #cd3951; }
   @media (min-width: 768px) {
     .login-separator {
       border-right: 1px solid #adb5bd;
