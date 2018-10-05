@@ -6,26 +6,14 @@ if (isset($_REQUEST['action'])) {
     switch ($_REQUEST['action']) {
       
       case 'logout':
-        session_destroy();
-        session_start();
-        header("Location:".url('home.php'));
-        //notice('You have been logged out');
+        logout();
         break;
       
       case 'login':
-        $result = mysqli_query($connection , "SELECT * FROM users WHERE email = '" . mysqli_real_escape_string($connection, $_POST['email']) . "' AND password = '" . mysqli_real_escape_string($connection, $_POST['password']) . "'");
-        if ($row = mysqli_fetch_array($result)) {
-          unset($row['password']);
-          $_SESSION['user'] = $row;
-          header("Location:".url('home.php'));
-         // notice('You have been logged in.');
-        } else {
-         // notice('Ah, sorry, either the username or password was incorrect.');
-        }
-        break;
-      
+        login();
+        break; 
     }
-  }
+}
 
 if (isset($_SESSION['user'])) {
     $content = '
