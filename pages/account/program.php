@@ -1,6 +1,10 @@
 <?php 
 $title = 'Program XXX';
 
+if (!isset($_SESSION['user'])){
+    header("Location:".url('account.php'));
+}
+
 $content='
 <div class="account-program">
     <div class="container">

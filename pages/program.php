@@ -1,14 +1,8 @@
 <?
 $title = 'program';
-
-if (isset($_REQUEST['action'])){
-    if (isset($_SESSION['user']) && $_REQUEST['action']=='enter'){
-        header("Location:".url('account/program.php'));
-    }else{
-        header("Location:".url('account.php'));
-    }
+if (isset($_REQUEST['action']) && $_REQUEST['action']=='enter'){
+    header("Location:".url('account/program.php'));
 }
-
 $content = '
     <div class="program">
         <div class="container">
