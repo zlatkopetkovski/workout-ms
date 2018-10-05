@@ -12,52 +12,7 @@ if (isset($_REQUEST['submitted'])&& $_REQUEST['submitted']=='submit'){
     mail($to,$subject,$message,$from);
 }
 
-//create slider
-$slider_items = '';
-$slider_indicators = '';
-$slider_item_num = 0;
-$slider_rows = mysqli_query(get_connection() , "SELECT * FROM slider");
-while ($row = mysqli_fetch_array($slider_rows)){
-    if ($slider_item_num!=0){
-        $slider_items .= '<div class="carousel-item">';
-        $slider_indicators .= '<li data-target="#carouselIndicators" data-slide-to="'.$slider_item_num.'"></li>';
-    } else {
-        $slider_items .= '<div class="carousel-item active">';
-        $slider_indicators .= '<li data-target="#carouselIndicators" data-slide-to="'.$slider_item_num.'" class="active"></li>';
-    }
-    $slider_items .= '
-        <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-5">
-                <h1>'.$row['title'].'</h1>
-                <p>'.$row['text'].'</p>
-            </div>
-                <img class="d-block w-100 col-md-5" src="images/'.$row['image'].'" alt="First slide">
-            <div class="col-md-1"></div>
-        </div>
-    </div>';
-    $slider_item_num++;
-};
-
-$slider = '
-<div id="carouselIndicators" class="carousel slide my-slider" data-ride="carousel">
-    <ol class="carousel-indicators">'.
-        //add slider indicators
-        $slider_indicators.'
-    </ol>
-    <div class="carousel-inner">'.
-        //add slider items
-        $slider_items.'
-    </div>
-    <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon align-middle" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div>';
+$slider = get_slider();
 
 $programs='
 <div class="col-md-4 programs-card">
