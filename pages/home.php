@@ -14,38 +14,22 @@ if (isset($_REQUEST['submitted'])&& $_REQUEST['submitted']=='submit'){
 
 $slider = get_slider();
 
-$programs='
-<div class="col-md-4 programs-card">
-    <div class="card">
-        <img class="card-img-top" src="images/yoga1.jpg" alt="Card image">
-        <div class="card-body">
-            <h4 class="card-title">Program 1</h4>
-            <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-            <a href="program.php" class="btn btn-primary my-main-button">See Program</a>
-        </div>
-    </div>
-    </div>
+$program = '';
+$program_num = 0;
+$program_rows = mysqli_query(get_connection(), "SELECT * FROM programs");
+while ($program_row = mysqli_fetch_array($program_rows)){
+    $program.='
     <div class="col-md-4 programs-card">
     <div class="card">
-        <img class="card-img-top" src="images/yoga2.jpg" alt="Card image">
-        <div class="card-body">
-            <h4 class="card-title">Program 2</h4>
-            <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-            <a href="program.php" class="btn btn-primary  my-main-button">See Program</a>
-        </div>
-    </div>
-    </div>
-    <div class="col-md-4 programs-card">
-    <div class="card">
-        <img class="card-img-top" src="images/yoga3.jpg" alt="Card image">
-        <div class="card-body">
-            <h4 class="card-title">Program 3</h4>
-            <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-            <a href="program.php" class="btn btn-primary  my-main-button">See program</a>
+    <img class="card-img-top" src="images/'.$program_row['image'].'" alt="Card image">
+    <div class="card-body">
+        <h4 class="card-title">'.$program_row['title'].'</h4>
+        <p class="card-text">'.substr($program_row['details'],0, 80).'</p>
+        <a href="'.url('program.php').'" class="btn btn-primary my-main-button">See Program</a>
         </div>
     </div>
 </div>';
-
+}
 
 
 $content = '
@@ -58,7 +42,7 @@ $content = '
         <h2 class="programs-title">Programs</h2>
         <div class="container">
             <div class="row">
-                '.$programs.'
+                '.$program.'
             </div>
         </div>
     </div>
