@@ -3,6 +3,7 @@
 $title = 'Home';
 $mailto = get_settings('contact_mail');
 
+//contact form - sent email
 if (isset($_REQUEST['submitted'])&& $_REQUEST['submitted']=='submit'){
     $subject = $_REQUEST['name'];
     $from = $_REQUEST['email'];
@@ -11,50 +12,42 @@ if (isset($_REQUEST['submitted'])&& $_REQUEST['submitted']=='submit'){
     mail($to,$subject,$message,$from);
 }
 
+//create slider
+$slider_items = '';
+$slider_indicators = '';
+$slider_item_num = 0;
+$slider_rows = mysqli_query(get_connection() , "SELECT * FROM slider");
+while ($row = mysqli_fetch_array($slider_rows)){
+    if ($slider_item_num!=0){
+        $slider_items .= '<div class="carousel-item">';
+        $slider_indicators .= '<li data-target="#carouselIndicators" data-slide-to="'.$slider_item_num.'"></li>';
+    } else {
+        $slider_items .= '<div class="carousel-item active">';
+        $slider_indicators .= '<li data-target="#carouselIndicators" data-slide-to="'.$slider_item_num.'" class="active"></li>';
+    }
+    $slider_items .= '
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+                <h1>'.$row['title'].'</h1>
+                <p>'.$row['text'].'</p>
+            </div>
+                <img class="d-block w-100 col-md-5" src="images/'.$row['image'].'" alt="First slide">
+            <div class="col-md-1"></div>
+        </div>
+    </div>';
+    $slider_item_num++;
+};
+
 $slider = '
 <div id="carouselIndicators" class="carousel slide my-slider" data-ride="carousel">
-    <ol class="carousel-indicators">
-        <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselIndicators" data-slide-to="2"></li>
+    <ol class="carousel-indicators">'.
+        //add slider indicators
+        $slider_indicators.'
     </ol>
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-        <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-5">
-                <h1>Lorem ipsum dolor sit amet</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dapibus, 
-                    dui vel condimentum volutpat, arcu metus pulvinar lectus, eget ornare magna mi ut magna. </p>
-            </div>
-                <img class="d-block w-100 col-md-5" src="images/yoga1.jpg" alt="First slide">
-            <div class="col-md-1"></div>
-        </div>
-        </div>
-        <div class="carousel-item">
-        <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-5">
-                <h1>Lorem ipsum dolor sit amet</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dapibus, 
-                    dui vel condimentum volutpat, arcu metus pulvinar lectus, eget ornare magna mi ut magna. </p>
-            </div>
-                <img class="d-block w-100 col-md-5" src="images/yoga2.jpg" alt="First slide">
-            <div class="col-md-1"></div>
-        </div>
-        </div>
-        <div class="carousel-item">
-        <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-5">
-                <h1>Lorem ipsum dolor sit amet</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dapibus, 
-                    dui vel condimentum volutpat, arcu metus pulvinar lectus, eget ornare magna mi ut magna. </p>
-            </div>
-                <img class="d-block w-100 col-md-5" src="images/yoga3.jpg" alt="First slide">
-            <div class="col-md-1"></div>
-        </div>
-        </div>
+    <div class="carousel-inner">'.
+        //add slider items
+        $slider_items.'
     </div>
     <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon align-middle" aria-hidden="true"></span>
