@@ -37,6 +37,7 @@ function login(){
   if ($row = mysqli_fetch_array($result)) {
     unset($row['password']);
     $_SESSION['user'] = $row;
+    $_SESSION['id'] = $row['id'];
     header("Location:".url('home.php'));
  // notice('You have been logged in.');
   } else {
@@ -99,5 +100,10 @@ function get_slider(){
       </a>
   </div>';
   return $slider;
-}
+};
+
+function get_user_data(){
+    $query = "SELECT * FROM users WHERE id=$_SESSION[id]";
+    return mysqli_fetch_array(mysqli_query(get_connection(), $query));
+};
 ?>

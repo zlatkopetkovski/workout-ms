@@ -16,6 +16,7 @@ if (isset($_REQUEST['action'])) {
 }
 
 if (isset($_SESSION['user'])) {
+    $user = get_user_data();
     $content = '
     <div class="account">
     <div class="container">
@@ -32,13 +33,13 @@ if (isset($_SESSION['user'])) {
             <div class="col-md-1"></div>
             <div class="col-md-9 account-section-info-data">
                 <label>First and last name</label>
-                <h4>First and last name</h4>
+                <h4>'.$user['full_name'].'</h4>
                 <label>Email address</label>
-                <h4>email@address.com</h4>
-                <span>Joined on 01.01.2018</span>                        
+                <h4>'.$user['email'].'</h4>
+                <span>TODO:Joined on 01.01.2018</span>                        
             </div>
             <div class="col-12 text-center">
-                <a href="account-edit.html" class="btn btn-primary  my-main-button">Change my personal info</a>
+                <a href="'.url('account/edit.php').'" class="btn btn-primary  my-main-button">Change my personal info</a>
             </div>
         </div>
         <div class="account-section account-section-programs">
