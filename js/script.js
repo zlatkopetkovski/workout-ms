@@ -9,3 +9,19 @@
         y.style.display = "none";
     }
 }*/
+
+//TODO://FIX SCRIPT FOR MAXIMUM PARTICIPANTS FOR PROGRAM IN SPECIFIC LOCATION
+function getMaximumParticipants() {
+    var x = document.getElementById("selectLocation").value;
+    document.getElementById("max-for-location").innerHTML = "Maximum participants: " + x;
+    $.ajax({
+        
+        type: "post",
+        url: 'index.php',
+        data: {voteid: x },
+        success: function(data)
+        {
+           alert("success! X:" + data);
+        }
+    });
+};

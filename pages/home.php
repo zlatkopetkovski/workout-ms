@@ -25,7 +25,7 @@ while ($program_row = mysqli_fetch_array($program_rows)){
     <div class="card-body">
         <h4 class="card-title">'.$program_row['title'].'</h4>
         <p class="card-text">'.substr($program_row['details'],0, 80).'</p>
-        <a href="'.url('program.php').'" class="btn btn-primary my-main-button">See Program</a>
+        <a href="'.url('program.php').'?id='.$program_row['id'].'" class="btn btn-primary my-main-button">See Program</a>
         </div>
     </div>
 </div>';
