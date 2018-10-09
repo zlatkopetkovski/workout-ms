@@ -106,4 +106,11 @@ function get_user_data(){
     $query = "SELECT * FROM users WHERE id=$_SESSION[id]";
     return mysqli_fetch_array(mysqli_query(get_connection(), $query));
 };
+
+function change_user_informations(){   
+    $user_data = get_user_data();
+    if ($user_data["password"]==$_REQUEST["current-pass"]){
+        
+    }
+}
 ?>
