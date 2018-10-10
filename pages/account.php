@@ -16,6 +16,7 @@ if (isset($_REQUEST['action'])) {
 }
 
 if (isset($_SESSION['user'])) {
+    $title = 'Account';
     $user = get_user_data();
     $content = '
     <div class="account">
