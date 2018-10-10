@@ -21,25 +21,28 @@ $year = date('Y');
 // Show log in / log out links.
 
 if (isset($_SESSION['user'])){
-$login_logout = '
-    <div class="d-flex justify-content-end my-nav-login dropdown">
-        <a href="'.url('account.php').'" data-toggle="dropdown">
-            <span class="my-nav-login-icon-description"><b>First and Last name</b></span>
-            <span class="my-nav-login-icon" title="account" aria-hidden="true"></span>
-        </a>
-        <div class="dropdown-menu my-nav-dropdown-menu">
-            <a class="dropdown-item" href="'.url('account.php').'">My account</a>
-            <a class="dropdown-item" href="'.url('account.php').'?action=logout">Log out</a>
+    $user = get_user_data();
+
+    $login_logout = '
+        <div class="d-flex justify-content-end my-nav-login dropdown">
+            <a href="'.url('account.php').'" data-toggle="dropdown">
+                <span class="my-nav-login-icon-description"><b>'.$user["full_name"].'</b></span>
+                <span class="my-nav-login-icon" title="account" aria-hidden="true"></span>
+            </a>
+            <div class="dropdown-menu my-nav-dropdown-menu">
+                <a class="dropdown-item" href="'.url('account.php').'">My account</a>
+                <a class="dropdown-item" href="'.url('account.php').'?action=logout">Log out</a>
+            </div>
         </div>
-    </div>';
+    ';
 } else{
     $login_logout = '
-    <div class="d-flex justify-content-end my-nav-login">
-    <a href="'.url('account.php').'">
-            <span class="my-nav-login-icon-description">Log in</span>
-            <span class="my-nav-login-icon" title="account" aria-hidden="true"></span>
-        </a>
-    </div>';
+        <div class="d-flex justify-content-end my-nav-login">
+        <a href="'.url('account.php').'">
+                <span class="my-nav-login-icon-description">Log in</span>
+                <span class="my-nav-login-icon" title="account" aria-hidden="true"></span>
+            </a>
+        </div>';
 }
 
 // Include the file that matches the path name.

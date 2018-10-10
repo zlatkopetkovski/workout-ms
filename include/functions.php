@@ -109,8 +109,15 @@ function get_user_data(){
 
 function change_user_informations(){   
     $user_data = get_user_data();
-    if ($user_data["password"]==$_REQUEST["current-pass"]){
-        
+    $fullName = $_REQUEST['full-name'];
+    $email = $_REQUEST['email'];
+    $current_pass = $_REQUEST['current-pass'];
+    $new_pass = $_REQUEST['new-pass'];
+    $confirm_pass = $_REQUEST['confirm-pass'];
+    $user_id = $user_data['id'];
+    if ($user_data['password']==$current_pass && $new_pass==$confirm_pass){
+        mysqli_query(get_connection(), "UPDATE users SET full_name = '$fullName', email = '$email', password = '$new_pass' WHERE id=$user_id");
+        header("Location:".url('account.php'));
     }
 }
 ?>
