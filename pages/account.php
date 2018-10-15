@@ -15,6 +15,11 @@ if (isset($_REQUEST['action'])) {
     }
 }
 
+if (isset($_REQUEST['remove'])){
+    $query = "DELETE FROM users WHERE id = $_REQUEST[remove]";
+    mysqli_query(get_connection(),$query);
+}
+
 if (isset($_SESSION['user'])) {
     $title = 'Account';
     $user = get_user_data();
@@ -101,55 +106,47 @@ if (isset($_SESSION['user'])) {
     </div>
 </div>';}
 elseif($user["id_role"] == "admin"){
-    $content .='<div class="default-section default-section-bottom-line">
-    <div class="col-12 text-center">
-        <h2 class="default-section-title">Programs</h2>
-        <span>3 programs</span>
-        <div class="col-12 text-center">
-            <button type="submit" name="addNew" value="Add new program" class="btn btn-primary  my-main-button default-section-button">Add new program</button>
-        </div>
-        <div class="row default-block default-block-border">
-            <div class="row col-6">
-                <div class="col-12 text-left d-flex align-items-center">
-                    <a href="account-program.html">
-                        <h4>Program 1</h4>
-                    </a>
-                </div>
-            </div>
-            <div class="row col-6  flex-row-reverse align-items-center account-section-programs-block-details">
-                <span>2 locations</span> 
-            </div>
-        </div>
+    //all programs
+    $programs_block = '';
+    $program_rows = mysqli_query(get_connection(), "SELECT * FROM programs");
+    $number_of_programs = 0;
+    while ($program_row = mysqli_fetch_array($program_rows)){
+        $number_of_programs++;
+        $number_locations = mysqli_fetch_assoc(mysqli_query(get_connection(), "SELECT COUNT(*) AS NumberOfLocations FROM program_location WHERE idp = $program_row[id]"));
 
+        $programs_block .='
         <div class="row default-block default-block-border">
             <div class="row col-6">
                 <div class="col-12 text-left d-flex align-items-center">
-                    <a href="account-program.html">
-                        <h4>Program 2</h4>
+                    <a href="'.url('program.php').'?id='.$program_row['id'].'">
+                        <h4>'.$program_row['title'].'</h4>
                     </a>
                 </div>
             </div>
             <div class="row col-6  flex-row-reverse align-items-center account-section-programs-block-details">
-                <span class="">3 locations</span> 
+                <span>'.$number_locations['NumberOfLocations'].' locations</span> 
             </div>
-        </div>
-    </div>
-</div>
+        </div>';
+    }
 
-<div class="row default-section default-section-bottom-line">
-    <div class="col-12 text-center">
-        <h2 class="default-section-title">Participants</h2>
-        <span>13 participants</span>
+    //all participants
+    $participants_block = '';
+    $participant_rows = mysqli_query(get_connection(), "SELECT * FROM users WHERE id_role = 'regular'");
+    $number_of_participant = 0;
+    while ($participant_row = mysqli_fetch_array($participant_rows)){
+        $number_of_participant++;
+        $participants_block .='
+        <form action="'.url('account.php').'" method="post">
         <div class="row default-block default-block-border">
             <div class="row col-6">
                 <div class="col-12 text-left d-flex align-items-center">
-                    <a href="account-program.html">
-                        <h4>First and Last name</h4>
+                    <a href="#">
+                        <h4>'.$participant_row['full_name'].'</h4>
                     </a>
                 </div>
             </div>
             <div class="row col-6  flex-row-reverse align-items-center account-section-programs-block-details">
-                <button type="submit" name="remove" value="remove_participant" class="btn btn-light  my-light-button default-block-button">Delete participant</button>
+                <button type="submit" name="remove" value="'.$participant_row['id'].'" class="btn btn-light  my-light-button default-block-button">Delete participant</button>
             </div>
             <div class="row col-12">
                 <div class="col-12 text-left d-flex align-items-center default-block">
@@ -160,23 +157,30 @@ elseif($user["id_role"] == "admin"){
                 </div>
             </div>
         </div>
-        <div class="row default-block default-block-border">
-            <div class="row col-6">
-                <div class="col-12 text-left d-flex align-items-center">
-                    <a href="account-program.html">
-                        <h4>First and Last name</h4>
-                    </a>
-                </div>
-            </div>
-            <div class="row col-6  flex-row-reverse align-items-center account-section-programs-block-details">
-                <button type="submit" name="remove" value="remove_participant" class="btn btn-light  my-light-button default-block-button">Delete participant</button>
-            </div>
-            <div class="row col-12">
-                <div class="col-12 text-left d-flex align-items-center default-block">
-                    <span>Program 3</span>
-                </div>
-            </div>
+        </form>
+        ';
+    }
+
+    $content .='<div class="default-section default-section-bottom-line">
+    <div class="col-12 text-center">
+        <h2 class="default-section-title">Programs</h2>
+        <span>'.$number_of_programs.' programs</span>
+        <div class="col-12 text-center">
+            <button type="submit" name="addNew" value="Add new program" class="btn btn-primary  my-main-button default-section-button">Add new program</button>
         </div>
+        '.
+        $programs_block
+        .'
+    </div>
+</div>
+
+<div class="row default-section default-section-bottom-line">
+    <div class="col-12 text-center">
+        <h2 class="default-section-title">Participants</h2>
+        <span>'.$number_of_participant.' participants</span>
+        '.
+        $participants_block
+        .'
     </div>
 </div>
 
