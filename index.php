@@ -22,8 +22,8 @@ $year = date('Y');
 
 if (isset($_SESSION['user'])){
     $user = get_user_data();
-
-    $login_logout = '
+    if ($user["id_role"]=="regular"){
+        $login_logout = '
         <div class="d-flex justify-content-end my-nav-login dropdown">
             <a href="'.url('account.php').'" data-toggle="dropdown">
                 <span class="my-nav-login-icon-description"><b>'.$user["full_name"].'</b></span>
@@ -35,6 +35,22 @@ if (isset($_SESSION['user'])){
             </div>
         </div>
     ';
+    } elseif ($user["id_role"]=="admin"){
+        $login_logout = '
+        <div class="d-flex justify-content-end my-nav-login dropdown">
+            <a href="'.url('account.php').'" data-toggle="dropdown">
+                <span class="my-nav-login-icon-description"><b>'.$user["full_name"].'</b></span>
+                <span class="my-nav-login-icon" title="account" aria-hidden="true"></span>
+            </a>
+            <div class="dropdown-menu my-nav-dropdown-menu">
+                <a class="dropdown-item" href="'.url('account.php').'">Dashboard</a>
+                <a class="dropdown-item" href="#">Statistics</a>
+                <a class="dropdown-item" href="'.url('account.php').'?action=logout">Log out</a>
+            </div>
+        </div>
+    ';
+    }
+    
 } else{
     $login_logout = '
         <div class="d-flex justify-content-end my-nav-login">

@@ -18,11 +18,15 @@ if (isset($_REQUEST['action'])) {
 if (isset($_SESSION['user'])) {
     $title = 'Account';
     $user = get_user_data();
+    $page_heading = "My account";
+    if ($user["id_role"] == "admin"){
+        $page_heading = "Dashboard";
+    }
     $content = '
     <div class="account">
     <div class="container">
         <div class="account-title text-center">
-            <h1>My account</h1>
+            <h1>'.$page_heading.'</h1>
         </div>
         <div class="row account-section account-section-info">
             <div class="col-12 text-center">
@@ -42,8 +46,10 @@ if (isset($_SESSION['user'])) {
             <div class="col-12 text-center">
                 <a href="'.url('account/edit.php').'" class="btn btn-primary  my-main-button">Change my personal info</a>
             </div>
-        </div>
-        <div class="account-section account-section-programs">
+        </div>';
+
+        if ($user["id_role"] == "regular"){
+        $content .= '<div class="account-section account-section-programs">
             <div class="col-12 text-center">
                 <h2>My programs</h2>
                 <div class="row account-section-programs-block">
@@ -93,7 +99,90 @@ if (isset($_SESSION['user'])) {
             </div>
         </div>
     </div>
+</div>';}
+elseif($user["id_role"] == "admin"){
+    $content .='<div class="default-section default-section-bottom-line">
+    <div class="col-12 text-center">
+        <h2 class="default-section-title">Programs</h2>
+        <span>3 programs</span>
+        <div class="col-12 text-center">
+            <button type="submit" name="addNew" value="Add new program" class="btn btn-primary  my-main-button default-section-button">Add new program</button>
+        </div>
+        <div class="row default-block default-block-border">
+            <div class="row col-6">
+                <div class="col-12 text-left d-flex align-items-center">
+                    <a href="account-program.html">
+                        <h4>Program 1</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="row col-6  flex-row-reverse align-items-center account-section-programs-block-details">
+                <span>2 locations</span> 
+            </div>
+        </div>
+
+        <div class="row default-block default-block-border">
+            <div class="row col-6">
+                <div class="col-12 text-left d-flex align-items-center">
+                    <a href="account-program.html">
+                        <h4>Program 2</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="row col-6  flex-row-reverse align-items-center account-section-programs-block-details">
+                <span class="">3 locations</span> 
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row default-section default-section-bottom-line">
+    <div class="col-12 text-center">
+        <h2 class="default-section-title">Participants</h2>
+        <span>13 participants</span>
+        <div class="row default-block default-block-border">
+            <div class="row col-6">
+                <div class="col-12 text-left d-flex align-items-center">
+                    <a href="account-program.html">
+                        <h4>First and Last name</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="row col-6  flex-row-reverse align-items-center account-section-programs-block-details">
+                <button type="submit" name="remove" value="remove_participant" class="btn btn-light  my-light-button default-block-button">Delete participant</button>
+            </div>
+            <div class="row col-12">
+                <div class="col-12 text-left d-flex align-items-center default-block">
+                    <span>Program 1</span>
+                </div>
+                <div class="col-12 text-left d-flex align-items-center">
+                    <span>Program 2</span>
+                </div>
+            </div>
+        </div>
+        <div class="row default-block default-block-border">
+            <div class="row col-6">
+                <div class="col-12 text-left d-flex align-items-center">
+                    <a href="account-program.html">
+                        <h4>First and Last name</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="row col-6  flex-row-reverse align-items-center account-section-programs-block-details">
+                <button type="submit" name="remove" value="remove_participant" class="btn btn-light  my-light-button default-block-button">Delete participant</button>
+            </div>
+            <div class="row col-12">
+                <div class="col-12 text-left d-flex align-items-center default-block">
+                    <span>Program 3</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
 </div>';
+}
 
 } else{
     $content ='

@@ -1,0 +1,28 @@
+.default-block{
+    a{
+        color: $pink;
+    }
+    &-border{
+        margin-top: px2rem(15);
+        margin-bottom: px2rem(15);
+        border: 1px solid $medium-gray;
+    }
+    &-button{
+        margin-top:px2rem(10);
+        margin-bottom: px2rem(10);
+    }
+}
+.default-section{
+    padding-top:px2rem(30);
+    padding-bottom: px2rem(60);
+    &-title{
+        margin-bottom: px2rem(26);
+    }
+    &-button{
+        margin-top:px2rem(26);
+        margin-bottom: px2rem(26);
+    }
+    &-bottom-line{
+        border-bottom: 1px solid $light-gray;
+    }
+}

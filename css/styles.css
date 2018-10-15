@@ -101,6 +101,27 @@ body {
 .account-edit {
   text-align: center; }
 
+.default-block a {
+  color: #cd3951; }
+.default-block-border {
+  margin-top: 0.9375rem;
+  margin-bottom: 0.9375rem;
+  border: 1px solid #adb5bd; }
+.default-block-button {
+  margin-top: 0.625rem;
+  margin-bottom: 0.625rem; }
+
+.default-section {
+  padding-top: 1.875rem;
+  padding-bottom: 3.75rem; }
+  .default-section-title {
+    margin-bottom: 1.625rem; }
+  .default-section-button {
+    margin-top: 1.625rem;
+    margin-bottom: 1.625rem; }
+  .default-section-bottom-line {
+    border-bottom: 1px solid #e9ecef; }
+
 .my-main-button {
   background-color: #cd3951;
   border-color: #b73348; }
@@ -300,10 +321,6 @@ body {
   color: #495057; }
 .login-forgot-pass:active, .login-forgot-pass:hover {
   color: #495057; }
-.login-register a {
-  color: #cd3951; }
-.login-register:active, .login-register:hover {
-  text-decoration: none; }
 .login-margin {
   display: block;
   padding-top: 1.375rem;
