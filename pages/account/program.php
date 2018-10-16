@@ -5,6 +5,55 @@ if (!isset($_SESSION['user'])){
     header("Location:".url('account.php'));
 }
 
+if (isset($_POST['newPost'])){
+    $currentDir = getcwd();
+    $uploadDir = '/images/uploads/';
+
+    $image = $_FILES['image'];
+    $imageName = $_FILES['image']['name'];
+    $imageTmpName = $_FILES['image']['tmp_name'];
+    $imageSize = $_FILES['image']['size'];
+    $imageError = $_FILES['image']['error'];
+    $imageType = $_FILES['image']['type'];
+    
+    $fileExt = explode('.', $imageName);
+    $fileActualExt = strtolower(end($fileExt));
+    
+    $allowed = array ('jpg', 'jpeg', 'png');
+
+    //if there is no image selected
+    $imageUploaded = false;
+    if ($fileActualExt!=""){
+        if (in_array($fileActualExt, $allowed)){
+            if ($imageError === 0){
+                if ($imageSize < 1000000){
+                    $imageUploaded = true;
+                    $newImageName = uniqid('', true).'.'.$fileActualExt;
+                    $fileDest = $currentDir.$uploadDir.$newImageName;
+                    move_uploaded_file($imageTmpName, $fileDest);
+                } else {
+                    echo "file is too big";
+                }
+            } else {
+                echo "error uploading file";
+            }
+        } else {
+            echo "unsuporter file";
+        }   
+    }
+    $postTitle = mysqli_real_escape_string(get_connection(), $_POST['title']);
+    $postContent = mysqli_real_escape_string(get_connection(), $_POST['content']);
+    $userName = $user['full_name'];
+    $datetime = date("d-M-Y");
+
+    if ($imageUploaded){
+        $query = "INSERT INTO posts (title, content, image, id_user, id_pl, upload_date) VALUES ('$postTitle ', '$postContent','$newImageName', '$user[id]', '1', NOW())";
+    } else {
+        $query = "INSERT INTO posts (title, content, id_user, id_pl, upload_date) VALUES ('$postTitle', '$postContent', '$user[id]', '1', NOW())";
+    }
+    mysqli_query(get_connection(),$query);
+}
+
 $content='
 <div class="account-program">
     <div class="container">
@@ -76,23 +125,26 @@ $content='
                         <span aria-hidden="true">&times;</span>
                     </button>
                     </div>
-                    <div class="modal-body">
-                        <form action="#">
+                    <form action="'.url('account/program.php').'" method="post" enctype="multipart/form-data">
+                        <div class="modal-body">
                             <div class="form-group">
-                                <label for="name" class="hiden-label">Name:</label>
-                                <input type="text" class="form-control" id="title" placeholder="Title">
+                                <label for="title" class="hiden-label">Name:</label>
+                                <input type="text" class="form-control" id="title" name="title" placeholder="Title">
                             </div>
                             <div class="form-group">
-                                <label for="message" class="hiden-label">Write something:</label>
-                                <textarea class="form-control" id="message" rows="3" placeholder="Write something..."></textarea>
+                                <label for="content" class="hiden-label">Write something:</label>
+                                <textarea class="form-control" id="content" name="content" rows="3" placeholder="Write something..."></textarea>
                             </div>
-                            <button type="submit" class="btn btn-light my-light-button contactus-button">Add image</button>
-                        </form>
-                    </div>
-                    <div class="modal-footer add-new-post-modal-footer">
-                        <button type="submit" class="btn btn-primary my-main-button">Post</button>
-                        <button type="button" class="btn btn-light my-light-button" data-dismiss="modal">Close</button>
-                    </div>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="addImage" name="image">
+                                <label class="custom-file-label my-file-label form-control-file" for="addImage">Insert image</label>
+                            </div>
+                        </div>
+                        <div class="modal-footer add-new-post-modal-footer">
+                            <button type="submit" class="btn btn-primary my-main-button" name="newPost" value="save">Post</button>
+                            <button type="button" class="btn btn-light my-light-button" data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
                 </div>
                 </div>
             </div>

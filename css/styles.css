@@ -170,6 +170,11 @@ body {
       color: #cd3951;
       text-decoration: none; }
 
+.my-file-label {
+  border: 1px solid #cd3951; }
+  .my-file-label:after {
+    border-left: 1px solid #cd3951; }
+
 .login-button {
   min-width: 100px;
   margin: 1.875rem 0 1.875rem 0; }

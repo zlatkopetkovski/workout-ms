@@ -58,6 +58,16 @@
         }
     }
 }
+
+//custom input type="file"
+.my-file-label{
+    border: 1px solid $pink;
+    &:after{
+        border-left: 1px solid $pink;
+    }
+}
+
+
 .login-button{
     min-width: 100px;
     margin: px2rem(30) 0 px2rem(30) 0;

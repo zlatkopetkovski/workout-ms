@@ -9,6 +9,9 @@
         y.style.display = "none";
     }
 }*/
+$('.custom-file-input').on('change',function(){
+    $(this).next('.form-control-file').addClass("selected").html($(this).val());
+  });
 
 //TODO://FIX SCRIPT FOR MAXIMUM PARTICIPANTS FOR PROGRAM IN SPECIFIC LOCATION
 function getMaximumParticipants() {
