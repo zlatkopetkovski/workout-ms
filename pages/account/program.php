@@ -9,7 +9,7 @@ $content='
 <div class="account-program">
     <div class="container">
         <div class="text-center account-program-title-location">
-            <h1>Program 1</h1>
+        <h1>'.$title.'</h1>
             <h4>Location 1</h4>
         </div>
         <div class="account-program-section account-program-section-participants text-center">

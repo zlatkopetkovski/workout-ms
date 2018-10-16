@@ -321,6 +321,8 @@ body {
   color: #495057; }
 .login-forgot-pass:active, .login-forgot-pass:hover {
   color: #495057; }
+.login-register a {
+  color: #cd3951; }
 .login-margin {
   display: block;
   padding-top: 1.375rem;
