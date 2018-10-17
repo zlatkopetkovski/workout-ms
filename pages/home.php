@@ -1,15 +1,38 @@
 <?php
 
 $title = 'Home';
+
+$notices = array();
 $mailto = get_settings('contact_mail');
 
 //contact form - sent email
 if (isset($_REQUEST['submitted'])&& $_REQUEST['submitted']=='submit'){
-    $subject = $_REQUEST['name'];
-    $from = $_REQUEST['email'];
-    $message = $_REQUEST['message'];
+    $noticesOutput = "";
+    $subject = mysqli_real_escape_string(get_connection(), trim($_REQUEST['name']));
+    $mailfrom = mysqli_real_escape_string(get_connection(), trim($_REQUEST['email']));
+    $message = mysqli_real_escape_string(get_connection(), $_REQUEST['message']);
 
-    mail($to,$subject,$message,$from);
+    if ($subject==''){
+        $notices[] = 'Subject is required!';
+    }
+    if (strlen($subject)>50){
+        $notices[] = 'Your subject is too long. Please enter some shorter subject!';
+    }
+    if ($mailfrom==''){
+        $notices[] = 'Enter your valid email address!';
+    }
+    if ($message==''){
+        $notices[] = 'Enter your message!';
+    }
+    if (count($notices)>0)
+    {
+        $noticesOutput = '<span>*'.implode('</span></br><span>*', $notices).'</span>';
+    }else{
+        //mail($mailto,$subject,$message,$mailfrom);
+        $subject = '';
+        $mailfrom = '';
+        $message = '';
+    }
 }
 
 $slider = get_slider();
@@ -85,18 +108,19 @@ $content = '
             <div class="row contactus-form">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
+                '.$noticesOutput.'
                     <form action="'.url('home.php').'" method="post">
                         <div class="form-group">
                             <label for="name" class="hiden-label">Name:</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="First and last name">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="First and last name" value="'.($subject!=''?$subject:'').'">
                         </div>
                         <div class="form-group">
                             <label for="email" class="hiden-label">Email:</label>
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Email address">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Email address" value="'.($mailfrom!=''?$mailfrom:'').'">
                         </div>
                         <div class="form-group">
                             <label for="message" class="hiden-label">Message</label>
-                            <textarea class="form-control" id="message" rows="3" name="message" placeholder="Message"></textarea>
+                            <textarea class="form-control" id="message" rows="3" name="message" placeholder="Message">'.($message!=''?$message:'').'</textarea>
                         </div>
                         <button type="submit" class="btn btn-primary my-main-button contactus-button">Send message</button>
                         <input type="hidden" name="submitted" value="submit" />
