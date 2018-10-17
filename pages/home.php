@@ -3,8 +3,12 @@
 $title = 'Home';
 
 $notices = array();
+$noticesOutput = "";
 $mailto = get_settings('contact_mail');
 
+$subject = '';
+$mailfrom = '';
+$message = '';
 //contact form - sent email
 if (isset($_REQUEST['submitted'])&& $_REQUEST['submitted']=='submit'){
     $noticesOutput = "";
