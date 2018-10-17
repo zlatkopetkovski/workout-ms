@@ -2,15 +2,33 @@
 
 $title = 'Log in';
 
+$notices = array();
+$noticesOutput = "";
 if (isset($_REQUEST['action'])) {
     switch ($_REQUEST['action']) {
       
       case 'logout':
-        logout();
+        session_destroy();
+        session_start();
+        header("Location:".url('home.php'));
         break;
       
       case 'login':
-        login();
+        db_connect();
+        $result = mysqli_query(get_connection() , "SELECT * FROM users WHERE email = '" . mysqli_real_escape_string(get_connection(), $_POST['email']) . "' AND password = '" . mysqli_real_escape_string(get_connection(), $_POST['password']) . "'");
+        if ($row = mysqli_fetch_array($result)) {
+            unset($row['password']);
+            $_SESSION['user'] = $row;
+            $_SESSION['id'] = $row['id'];
+            header("Location:".url('home.php'));
+        } 
+        if (!isset($_SESSION['user'])){
+            $notices[] = 'Wrong email address or password!';
+        }
+        $noticesOutput = "";
+        if (count($notices)>0){
+            $noticesOutput = '<span class="login-margin">'.implode('</span><span>', $notices).'</span>';
+        }
         break; 
     }
 }
@@ -202,10 +220,11 @@ elseif($user["id_role"] == "admin"){
                     <div class="col-md-2"></div>
                     <div class="col-md-4 text-center login-separator login-margin">
                         <span class="login-margin">Login with your email address</span>
+                        '.$noticesOutput.'
                         <form action="account.php" method="post">
                             <div class="form-group">
                                 <label for="email" class="hiden-label">Email:</label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Email address">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Email address" value="'. (isset($_POST['email'])? $_POST['email']:'').'">
                             </div>
                             <div class="form-group">
                                 <label for="password" class="hiden-label">Password</label>

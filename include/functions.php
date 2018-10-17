@@ -31,27 +31,6 @@ function get_connection(){
   }
 }
 
-function login(){
-  db_connect();
-  $result = mysqli_query(get_connection() , "SELECT * FROM users WHERE email = '" . mysqli_real_escape_string(get_connection(), $_POST['email']) . "' AND password = '" . mysqli_real_escape_string(get_connection(), $_POST['password']) . "'");
-  if ($row = mysqli_fetch_array($result)) {
-    unset($row['password']);
-    $_SESSION['user'] = $row;
-    $_SESSION['id'] = $row['id'];
-    header("Location:".url('home.php'));
- // notice('You have been logged in.');
-  } else {
- // notice('Ah, sorry, either the username or password was incorrect.');
-  }
-}
-
-function logout(){
-  session_destroy();
-  session_start();
-  header("Location:".url('home.php'));
-  //notice('You have been logged out');
-}
-
 function get_slider(){
   //create slider
   $slider_items = '';
