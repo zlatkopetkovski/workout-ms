@@ -63,7 +63,7 @@ if (isset($_SESSION['user'])){
 
 // Include the file that matches the path name.
 include('pages/' . $path);
-
 //$notices = get_notices();
-
-include('include/template.php');
+if ($path!="load-location.php"){
+    include('include/template.php');
+}

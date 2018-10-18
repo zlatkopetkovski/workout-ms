@@ -49,7 +49,8 @@ $content = '
             <div class="row program-elements-margin">
                 <div class="col-md-1"></div>
                 <div class="col-md-11">
-                    <span id="max-for-location" class="program-max-participants"></span>
+                    <!--<span id="max-for-location" class="program-max-participants"></span>-->
+                    <div id="max-for-location"></div>
                 </div>
             </div>
             <div class="row">
