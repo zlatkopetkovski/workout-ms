@@ -1,11 +1,10 @@
 <?
 $title = 'program';
 
-if (isset($_REQUEST['action']) && $_REQUEST['action']=='enter'){
-    header("Location:".url('account/program.php'));
-}
 global $location;
 $id = $_GET['id'];
+json_encode($id);
+
 if (!isset($_REQUEST['action'])&&$id!=''){
     $query = "SELECT * FROM programs WHERE id=$id";
     $program = mysqli_fetch_array(mysqli_query(get_connection(), $query));
@@ -20,10 +19,9 @@ if (!isset($_REQUEST['action'])&&$id!=''){
             $options .= '<option id="location" value="'.$location['id'].'">'.$location['address'].'</option>';
         }
     }
-} elseif (!isset($_REQUEST['action'])){
-    header("Location:".url('home.php#programs')); 
+} else {
+    header("Location:".url('home.php#programs'));
 }
-
 
 //SELECT * FROM $query WHERE id=
 $content = '
@@ -46,29 +44,21 @@ $content = '
                 </div>
                 <div class="col-md-1"></div>
             </div>
-            <div class="row program-elements-margin">
-                <div class="col-md-1"></div>
-                <div class="col-md-11">
-                    <!--<span id="max-for-location" class="program-max-participants"></span>-->
-                    <div id="max-for-location"></div>
-                </div>
-            </div>
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-6 text-center">
-                    <form action="program.php" method="post">
                         <div class="form-group">
                             <label class="hiden-label" for="selectLocation">Select location:</label>
-                            <select id="selectLocation" name="selectLocation" class="form-control" onchange="getMaximumParticipants()">
-                                <option ></option>
+                            <select id="selectLocation" name="selectLocation" class="form-control">
+                                <option value="-1">Select location</option>
                                 '.
                                 $options
                                 .'
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-primary my-main-button select-program-button">Sign up</button>
-                        <input type="hidden" name="action" value="enter" />
-                    </form>
+                        <div id="max-for-location" class="col-md-11">
+                        
+                        </div>
                 </div>
                 <div class="col-md-3"></div>
             </div>

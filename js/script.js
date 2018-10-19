@@ -6,8 +6,11 @@ $('.custom-file-input').on('change',function(){
 $(document).ready(function(){
     $('#selectLocation').change(function(){
         var x = document.getElementById("selectLocation").value;
+        var id = window.location.href.split("?id=");
+        
         $("#max-for-location").load("load-location.php", {
-            locationID: x
+            locationID: x,
+            programID: id[1]
         })
     })
 });
